@@ -1,0 +1,257 @@
+{
+    "tool":  "a9pwn-gate",
+    "tool_version":  "1.0.0",
+    "schema":  1,
+    "ok":  true,
+    "result":  "PASS",
+    "failure_reasons":  [
+
+                        ],
+    "repo":  {
+                 "path":  "E:\\Reverseing\\Arlo\\a9pwn",
+                 "exists":  true,
+                 "manifest_root":  "E:\\Reverseing\\Arlo\\a9pwn\\src"
+             },
+    "environment":  {
+                        "cargo":  "cargo 1.97.1 (c980f4866 2026-06-30)",
+                        "rustc":  "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+                        "pwsh":  "5.1.19041.6456",
+                        "machine":  "DESKTOP-7J6ESEF",
+                        "os":  "Microsoft Windows NT 10.0.19045.0"
+                    },
+    "git":  {
+                "available":  true,
+                "head":  "64eb4e1",
+                "branch":  "main",
+                "dirty_paths":  [
+                                    "D src/.verdict.rs.18664.fb22b442-0f26-4cfb-a6c7-819e89750b22.tmpdir/verdict.rs.tmp",
+                                    "M src/main.rs",
+                                    "M src/stages.rs",
+                                    "M src/trace.rs",
+                                    "M src/types.rs",
+                                    "M src/usb.rs",
+                                    "M src/verdict.rs",
+                                    "?? docs/VERIFICATION-live-run-addendum.md",
+                                    "?? docs/VERIFICATION-live-run.md"
+                                ],
+                "note":  "read-only: rev-parse + status only; the gate never checks out, resets or cleans"
+            },
+    "timing":  {
+                   "started_utc":  "2026-10-03T10:48:21.3883758Z",
+                   "manifest_before":  "2026-10-03T10:48:22.1157875Z",
+                   "manifest_after":  "2026-10-03T10:48:25.9525611Z",
+                   "finished_utc":  "2026-10-03T10:48:26.1223866Z",
+                   "duration_seconds":  4.73,
+                   "build_seconds":  0.69,
+                   "test_seconds":  2.46
+               },
+    "commands":  [
+                     {
+                         "name":  "build",
+                         "argv":  [
+                                      "cargo",
+                                      "build",
+                                      "--release",
+                                      "--offline"
+                                  ],
+                         "exit_code":  0,
+                         "seconds":  0.69,
+                         "warnings":  0,
+                         "errors":  [
+
+                                    ],
+                         "log":  "E:\\Reverseing\\Arlo\\tools\\arlo\\out\\logs\\gate-20261003-104821-0f3850\\build.log"
+                     },
+                     {
+                         "name":  "test",
+                         "argv":  [
+                                      "cargo",
+                                      "test",
+                                      "--release",
+                                      "--offline"
+                                  ],
+                         "exit_code":  0,
+                         "seconds":  2.46,
+                         "warnings":  0,
+                         "errors":  [
+
+                                    ],
+                         "log":  "E:\\Reverseing\\Arlo\\tools\\arlo\\out\\logs\\gate-20261003-104821-0f3850\\test.log"
+                     }
+                 ],
+    "tests":  {
+                  "parsed":  true,
+                  "result_lines":  3,
+                  "passed":  169,
+                  "failed":  0,
+                  "ignored":  0,
+                  "measured":  0,
+                  "filtered_out":  0,
+                  "targets":  [
+                                  {
+                                      "verdict":  "ok",
+                                      "passed":  168,
+                                      "failed":  0,
+                                      "ignored":  0,
+                                      "raw":  "test result: ok. 168 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s"
+                                  },
+                                  {
+                                      "verdict":  "ok",
+                                      "passed":  0,
+                                      "failed":  0,
+                                      "ignored":  0,
+                                      "raw":  "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s"
+                                  },
+                                  {
+                                      "verdict":  "ok",
+                                      "passed":  1,
+                                      "failed":  0,
+                                      "ignored":  0,
+                                      "raw":  "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.93s"
+                                  }
+                              ],
+                  "failed_names":  [
+
+                                   ]
+              },
+    "source_manifest":  {
+                            "root":  "E:\\Reverseing\\Arlo\\a9pwn\\src",
+                            "promise":  "these are the bytes the test command ran against, provided source_stable is true",
+                            "file_count":  9,
+                            "tree_sha256_before":  "6629C8DA6ABAD8EC34638F48719B20E266BEA3C52AA9EAE5DC7D7B59547BB25C",
+                            "tree_sha256_after":  "6629C8DA6ABAD8EC34638F48719B20E266BEA3C52AA9EAE5DC7D7B59547BB25C",
+                            "files":  [
+                                          {
+                                              "path":  "src\\config.rs",
+                                              "bytes":  20427,
+                                              "sha256":  "514CF83FA535294BA1FD18604A725316832681220A0BBFE7783AA880788CCA35",
+                                              "mtime_utc":  "2026-10-03T09:41:05.9994584Z",
+                                              "ignored":  false
+                                          },
+                                          {
+                                              "path":  "src\\lib.rs",
+                                              "bytes":  2531,
+                                              "sha256":  "6ED236AE7B1B8AB9E926D39F72D9DA7044B9CCEA7B5477C84E0BD0E6DF6AD9BD",
+                                              "mtime_utc":  "2026-10-03T09:48:21.9695176Z",
+                                              "ignored":  false
+                                          },
+                                          {
+                                              "path":  "src\\main.rs",
+                                              "bytes":  18237,
+                                              "sha256":  "84E2A314146830E50D449ECF465EE97AE7735719D3007FA425E169045D2E5955",
+                                              "mtime_utc":  "2026-10-03T10:47:17.9095942Z",
+                                              "ignored":  false
+                                          },
+                                          {
+                                              "path":  "src\\payload.rs",
+                                              "bytes":  30810,
+                                              "sha256":  "E3607CB89D1B2A8D4D9E6D0D29872A89A1341D1CD14B2E793A66172E0FCF67B5",
+                                              "mtime_utc":  "2026-10-03T09:46:19.5050044Z",
+                                              "ignored":  false
+                                          },
+                                          {
+                                              "path":  "src\\stages.rs",
+                                              "bytes":  131874,
+                                              "sha256":  "95C31EF94B0AF25C812E53AB42264E5AEA63CE596C5A00D3937BB323289ADCA6",
+                                              "mtime_utc":  "2026-10-03T10:34:36.8043008Z",
+                                              "ignored":  false
+                                          },
+                                          {
+                                              "path":  "src\\trace.rs",
+                                              "bytes":  67028,
+                                              "sha256":  "724F53C670EE439AD9B19DEE54EE8EC6657FAE274D03C58CCD691B16B61AC62D",
+                                              "mtime_utc":  "2026-10-03T10:32:02.0569522Z",
+                                              "ignored":  false
+                                          },
+                                          {
+                                              "path":  "src\\types.rs",
+                                              "bytes":  44113,
+                                              "sha256":  "F5230359EAF5752C0CAA7B732FD9787FFAD3B2C255405CB31D70CBB71CB93794",
+                                              "mtime_utc":  "2026-10-03T10:32:11.2463285Z",
+                                              "ignored":  false
+                                          },
+                                          {
+                                              "path":  "src\\usb.rs",
+                                              "bytes":  141788,
+                                              "sha256":  "64FC557D656A66CBEA3A01F40FE6596CD5B49E07112F76FA3D69C82AA5161901",
+                                              "mtime_utc":  "2026-10-03T10:46:13.6285216Z",
+                                              "ignored":  false
+                                          },
+                                          {
+                                              "path":  "src\\verdict.rs",
+                                              "bytes":  102922,
+                                              "sha256":  "191C89F3C54EBB4C79D658CA92C68ECDEA02764F26ED63B6D5FFCFBCD7627C9C",
+                                              "mtime_utc":  "2026-10-03T10:31:22.4145324Z",
+                                              "ignored":  false
+                                          }
+                                      ]
+                        },
+    "context_manifest":  {
+                             "note":  "hashed because these decide what the tests exercise: a swapped payload blob is a different exploit",
+                             "tree_sha256_before":  "6629C8DA6ABAD8EC34638F48719B20E266BEA3C52AA9EAE5DC7D7B59547BB25C",
+                             "tree_sha256_after":  "6629C8DA6ABAD8EC34638F48719B20E266BEA3C52AA9EAE5DC7D7B59547BB25C",
+                             "files":  [
+                                           {
+                                               "path":  "Cargo.lock",
+                                               "bytes":  4382,
+                                               "sha256":  "56FB98E6E2517830E63730774C9762408332C9D5A49856486C7F33AAB130B095",
+                                               "mtime_utc":  "2026-10-03T09:43:09.3147715Z",
+                                               "ignored":  false
+                                           },
+                                           {
+                                               "path":  "Cargo.toml",
+                                               "bytes":  530,
+                                               "sha256":  "2BA6BD0E5E476373A55FFC26E0A7FA2BEE4A3DE3B10618C2D04941584E1185AF",
+                                               "mtime_utc":  "2026-10-03T09:34:48.9963459Z",
+                                               "ignored":  false
+                                           },
+                                           {
+                                               "path":  "payloads\\payload_A9.bin",
+                                               "bytes":  280,
+                                               "sha256":  "A698045FAE09ACDC5BFAFC26EF3FE7848F1454B8CE8847FDC45396CC18A532B2",
+                                               "mtime_utc":  "2026-10-03T07:46:08.2998506Z",
+                                               "ignored":  false
+                                           },
+                                           {
+                                               "path":  "payloads\\payload_handle_checkm8_request.bin",
+                                               "bytes":  248,
+                                               "sha256":  "C0C213047A8902186392396CB7E57C096626B4812B61E07C2CF7CF6B99A9889C",
+                                               "mtime_utc":  "2026-10-03T07:46:08.3007227Z",
+                                               "ignored":  false
+                                           },
+                                           {
+                                               "path":  "payloads\\README.md",
+                                               "bytes":  2476,
+                                               "sha256":  "42AE1EC73F182B6CA4567312772EBA4E98E05F197E2FE438898E3E2B1DB02ECA",
+                                               "mtime_utc":  "2026-10-03T08:34:16.9542482Z",
+                                               "ignored":  false
+                                           }
+                                       ]
+                         },
+    "source_stable":  true,
+    "changed_during_run":  [
+
+                           ],
+    "rewritten_identical":  [
+
+                            ],
+    "ignored_globs":  [
+
+                      ],
+    "artefacts":  {
+                      "a9pwn_exe":  {
+                                        "path":  "E:\\Reverseing\\Arlo\\a9pwn\\target\\release\\a9pwn.exe",
+                                        "sha256":  "51FA2F8E8A09A5E6BBBA4E9E127B321F309966DA2AFD2CFE0C4C3FAA1B67B7B7",
+                                        "mtime_utc":  "2026-10-03T10:47:31.4515290Z",
+                                        "in_window":  false
+                                    },
+                      "newest_test_exe":  {
+                                              "path":  "E:\\Reverseing\\Arlo\\a9pwn\\target\\release\\deps\\a9pwn-e2e6e0d0a9bcb134.exe",
+                                              "sha256":  "7CF50988E18AB978E850988E578FFB78CC1D59D563667B44D4DF2822D0A4BDF5",
+                                              "mtime_utc":  "2026-10-03T10:47:32.3463845Z",
+                                              "in_window":  false
+                                          }
+                  },
+    "logs":  "E:\\Reverseing\\Arlo\\tools\\arlo\\out\\logs\\gate-20261003-104821-0f3850",
+    "meaning":  "PASS means these exact bytes built, and their tests reported no failure. It says nothing about the device, the driver, or whether checkm8 will work."
+}

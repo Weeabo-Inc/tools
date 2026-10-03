@@ -1,0 +1,161 @@
+{
+    "tool":  "a9pwn-gate",
+    "tool_version":  "1.0.0",
+    "schema":  1,
+    "ok":  false,
+    "result":  "FAIL",
+    "failure_reasons":  [
+                            "source_changed_during_run: src\\mutated.txt [added] - the tests did not run against a fixed tree, so their verdict describes no particular bytes"
+                        ],
+    "repo":  {
+                 "path":  "E:\\Reverseing\\Arlo\\tools\\arlo\\.selftest\\mutate-crate",
+                 "exists":  true,
+                 "manifest_root":  "E:\\Reverseing\\Arlo\\tools\\arlo\\.selftest\\mutate-crate\\src"
+             },
+    "environment":  {
+                        "cargo":  "cargo 1.97.1 (c980f4866 2026-06-30)",
+                        "rustc":  "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+                        "pwsh":  "5.1.19041.6456",
+                        "machine":  "DESKTOP-7J6ESEF",
+                        "os":  "Microsoft Windows NT 10.0.19045.0"
+                    },
+    "git":  {
+                "available":  false,
+                "head":  null,
+                "branch":  null,
+                "dirty_paths":  [
+
+                                ],
+                "note":  "git inspection failed: fatal: not a git repository (or any of the parent directories): .git"
+            },
+    "timing":  {
+                   "started_utc":  "2026-10-03T10:47:22.5763692Z",
+                   "manifest_before":  "2026-10-03T10:47:22.8051634Z",
+                   "manifest_after":  "2026-10-03T10:47:24.1752438Z",
+                   "finished_utc":  "2026-10-03T10:47:24.2027826Z",
+                   "duration_seconds":  1.63,
+                   "build_seconds":  0.35,
+                   "test_seconds":  0.96
+               },
+    "commands":  [
+                     {
+                         "name":  "build",
+                         "argv":  [
+                                      "cargo",
+                                      "build",
+                                      "--release",
+                                      "--offline"
+                                  ],
+                         "exit_code":  0,
+                         "seconds":  0.35,
+                         "warnings":  0,
+                         "errors":  [
+
+                                    ],
+                         "log":  "E:\\Reverseing\\Arlo\\tools\\arlo\\out\\logs\\gate-20261003-104722-d54f77\\build.log"
+                     },
+                     {
+                         "name":  "test",
+                         "argv":  [
+                                      "cargo",
+                                      "test",
+                                      "--release",
+                                      "--offline"
+                                  ],
+                         "exit_code":  0,
+                         "seconds":  0.96,
+                         "warnings":  0,
+                         "errors":  [
+
+                                    ],
+                         "log":  "E:\\Reverseing\\Arlo\\tools\\arlo\\out\\logs\\gate-20261003-104722-d54f77\\test.log"
+                     }
+                 ],
+    "tests":  {
+                  "parsed":  true,
+                  "result_lines":  2,
+                  "passed":  2,
+                  "failed":  0,
+                  "ignored":  0,
+                  "measured":  0,
+                  "filtered_out":  0,
+                  "targets":  [
+                                  {
+                                      "verdict":  "ok",
+                                      "passed":  2,
+                                      "failed":  0,
+                                      "ignored":  0,
+                                      "raw":  "test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+                                  },
+                                  {
+                                      "verdict":  "ok",
+                                      "passed":  0,
+                                      "failed":  0,
+                                      "ignored":  0,
+                                      "raw":  "test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s"
+                                  }
+                              ],
+                  "failed_names":  [
+
+                                   ]
+              },
+    "source_manifest":  {
+                            "root":  "E:\\Reverseing\\Arlo\\tools\\arlo\\.selftest\\mutate-crate\\src",
+                            "promise":  "these are the bytes the test command ran against, provided source_stable is true",
+                            "file_count":  1,
+                            "tree_sha256_before":  "DC3C8E478D6A6ECA21889CE42082FD89C482B6A8954E2F53DDC7CDD2FC1C6EAC",
+                            "tree_sha256_after":  "51CC9869412A74E542ABE0BF9AC0340FE069A93E6F859A7EFE16A23E94546B1E",
+                            "files":  [
+                                          {
+                                              "path":  "src\\lib.rs",
+                                              "bytes":  511,
+                                              "sha256":  "EC1DA4A8143BEB438DEF3DE68216F657EF9DA71379FF2E806F0392BA6AEC6C86",
+                                              "mtime_utc":  "2026-10-03T10:47:22.4496872Z",
+                                              "ignored":  false
+                                          }
+                                      ]
+                        },
+    "context_manifest":  {
+                             "note":  "hashed because these decide what the tests exercise: a swapped payload blob is a different exploit",
+                             "tree_sha256_before":  "DC3C8E478D6A6ECA21889CE42082FD89C482B6A8954E2F53DDC7CDD2FC1C6EAC",
+                             "tree_sha256_after":  "51CC9869412A74E542ABE0BF9AC0340FE069A93E6F859A7EFE16A23E94546B1E",
+                             "files":  [
+                                           {
+                                               "path":  "Cargo.lock",
+                                               "bytes":  164,
+                                               "sha256":  "4DCF1D2829A09C69B2F9FCFE63D58E1A1E975A38C57676CDF9CE92F6C909ED02",
+                                               "mtime_utc":  "2026-10-03T10:47:22.5587348Z",
+                                               "ignored":  false
+                                           },
+                                           {
+                                               "path":  "Cargo.toml",
+                                               "bytes":  101,
+                                               "sha256":  "B723146DEAB251A9D4D81902E46F9D4F6E8A53CCEB9C8681923E88172EB68F79",
+                                               "mtime_utc":  "2026-10-03T10:47:22.4486888Z",
+                                               "ignored":  false
+                                           }
+                                       ]
+                         },
+    "source_stable":  false,
+    "changed_during_run":  [
+                               {
+                                   "path":  "src\\mutated.txt",
+                                   "change":  "added",
+                                   "scope":  "source",
+                                   "sha_before":  null,
+                                   "sha_after":  "2D711642B726B04401627CA9FBAC32F5C8530FB1903CC4DB02258717921A4881"
+                               }
+                           ],
+    "rewritten_identical":  [
+
+                            ],
+    "ignored_globs":  [
+
+                      ],
+    "artefacts":  {
+                      "a9pwn_exe":  null,
+                      "newest_test_exe":  null
+                  },
+    "logs":  "E:\\Reverseing\\Arlo\\tools\\arlo\\out\\logs\\gate-20261003-104722-d54f77",
+    "meaning":  "PASS means these exact bytes built, and their tests reported no failure. It says nothing about the device, the driver, or whether checkm8 will work."
+}

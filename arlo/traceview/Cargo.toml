@@ -1,0 +1,25 @@
+[package]
+name = "traceview"
+version = "0.1.0"
+edition = "2021"
+description = "Reads an a9pwn trace file and reports what is actually in it. Reads a file; sends nothing, touches no hardware."
+license = "Apache-2.0"
+
+# Dependency-light on purpose, and both are cached locally so `--offline` works:
+#   serde_json — the same parser a9pwn writes the JSONL with, so "malformed"
+#                means malformed, not "our hand-rolled scanner disagreed".
+#   sha2       — a *third-party* SHA-256, deliberately not a9pwn's hand-rolled
+#                one: this tool exists to be an independent check, and PowerShell's
+#                Get-FileHash is a third independent implementation.
+# No regex, no clap, no serde derive.
+[dependencies]
+serde_json = "1"
+sha2 = "0.10"
+
+[lib]
+name = "traceview"
+path = "src/lib.rs"
+
+[[bin]]
+name = "traceview"
+path = "src/main.rs"

@@ -1,0 +1,147 @@
+{
+    "tool":  "a9pwn-gate",
+    "tool_version":  "1.0.0",
+    "schema":  1,
+    "ok":  false,
+    "result":  "FAIL",
+    "failure_reasons":  [
+                            "build_failed: cargo build exited 101",
+                            "test_command_failed: cargo test exited 101",
+                            "no_test_result_lines: cargo test produced no \"test result:\" line, so no test ran to a verdict (a build that fails to compile looks exactly like this)"
+                        ],
+    "repo":  {
+                 "path":  "E:\\Reverseing\\Arlo\\tools\\arlo\\.selftest\\broken-crate",
+                 "exists":  true,
+                 "manifest_root":  "E:\\Reverseing\\Arlo\\tools\\arlo\\.selftest\\broken-crate\\src"
+             },
+    "environment":  {
+                        "cargo":  "cargo 1.97.1 (c980f4866 2026-06-30)",
+                        "rustc":  "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+                        "pwsh":  "5.1.19041.6456",
+                        "machine":  "DESKTOP-7J6ESEF",
+                        "os":  "Microsoft Windows NT 10.0.19045.0"
+                    },
+    "git":  {
+                "available":  false,
+                "head":  null,
+                "branch":  null,
+                "dirty_paths":  [
+
+                                ],
+                "note":  "git inspection failed: fatal: not a git repository (or any of the parent directories): .git"
+            },
+    "timing":  {
+                   "started_utc":  "2026-10-03T10:47:24.3415375Z",
+                   "manifest_before":  "2026-10-03T10:47:24.5923025Z",
+                   "manifest_after":  "2026-10-03T10:47:25.2371507Z",
+                   "finished_utc":  "2026-10-03T10:47:25.2828596Z",
+                   "duration_seconds":  0.94,
+                   "build_seconds":  0.34,
+                   "test_seconds":  0.26
+               },
+    "commands":  [
+                     {
+                         "name":  "build",
+                         "argv":  [
+                                      "cargo",
+                                      "build",
+                                      "--release",
+                                      "--offline"
+                                  ],
+                         "exit_code":  101,
+                         "seconds":  0.34,
+                         "warnings":  0,
+                         "errors":  [
+                                        "error[E0308]: mismatched types",
+                                        "error: could not compile `gate-selftest-broken` (lib) due to 1 previous error"
+                                    ],
+                         "log":  "E:\\Reverseing\\Arlo\\tools\\arlo\\out\\logs\\gate-20261003-104724-e09001\\build.log"
+                     },
+                     {
+                         "name":  "test",
+                         "argv":  [
+                                      "cargo",
+                                      "test",
+                                      "--release",
+                                      "--offline"
+                                  ],
+                         "exit_code":  101,
+                         "seconds":  0.26,
+                         "warnings":  1,
+                         "errors":  [
+                                        "error[E0308]: mismatched types",
+                                        "error: could not compile `gate-selftest-broken` (lib) due to 1 previous error",
+                                        "error: could not compile `gate-selftest-broken` (lib test) due to 1 previous error"
+                                    ],
+                         "log":  "E:\\Reverseing\\Arlo\\tools\\arlo\\out\\logs\\gate-20261003-104724-e09001\\test.log"
+                     }
+                 ],
+    "tests":  {
+                  "parsed":  false,
+                  "result_lines":  0,
+                  "passed":  0,
+                  "failed":  0,
+                  "ignored":  0,
+                  "measured":  0,
+                  "filtered_out":  0,
+                  "targets":  [
+
+                              ],
+                  "failed_names":  [
+
+                                   ]
+              },
+    "source_manifest":  {
+                            "root":  "E:\\Reverseing\\Arlo\\tools\\arlo\\.selftest\\broken-crate\\src",
+                            "promise":  "these are the bytes the test command ran against, provided source_stable is true",
+                            "file_count":  1,
+                            "tree_sha256_before":  "1218CFA1F0897862B8DAD1C38F5926679C6981B4D7AE318AA8D8B3656533E6F1",
+                            "tree_sha256_after":  "1218CFA1F0897862B8DAD1C38F5926679C6981B4D7AE318AA8D8B3656533E6F1",
+                            "files":  [
+                                          {
+                                              "path":  "src\\lib.rs",
+                                              "bytes":  75,
+                                              "sha256":  "0E951963AB82350CA7A97D33CADD8009489856CDCAF245DCCCDFBF8E4387609E",
+                                              "mtime_utc":  "2026-10-03T10:47:24.2316645Z",
+                                              "ignored":  false
+                                          }
+                                      ]
+                        },
+    "context_manifest":  {
+                             "note":  "hashed because these decide what the tests exercise: a swapped payload blob is a different exploit",
+                             "tree_sha256_before":  "1218CFA1F0897862B8DAD1C38F5926679C6981B4D7AE318AA8D8B3656533E6F1",
+                             "tree_sha256_after":  "1218CFA1F0897862B8DAD1C38F5926679C6981B4D7AE318AA8D8B3656533E6F1",
+                             "files":  [
+                                           {
+                                               "path":  "Cargo.lock",
+                                               "bytes":  164,
+                                               "sha256":  "8955DB9B9BB406CA3E1ABFD144927AACFFCFCDC630CF997F633802EE0585F3F7",
+                                               "mtime_utc":  "2026-10-03T10:47:24.3280120Z",
+                                               "ignored":  false
+                                           },
+                                           {
+                                               "path":  "Cargo.toml",
+                                               "bytes":  101,
+                                               "sha256":  "F16B734A1F6F558DFED32656A03BC4F82004FFADF070251B430F684C6572F6A2",
+                                               "mtime_utc":  "2026-10-03T10:47:24.2316645Z",
+                                               "ignored":  false
+                                           }
+                                       ]
+                         },
+    "source_stable":  true,
+    "changed_during_run":  [
+
+                           ],
+    "rewritten_identical":  [
+
+                            ],
+    "ignored_globs":  [
+
+                      ],
+    "artefacts":  {
+                      "a9pwn_exe":  null,
+                      "newest_test_exe":  null
+                  },
+    "logs":  "E:\\Reverseing\\Arlo\\tools\\arlo\\out\\logs\\gate-20261003-104724-e09001",
+    "meaning":  "PASS means these exact bytes built, and their tests reported no failure. It says nothing about the device, the driver, or whether checkm8 will work."
+}

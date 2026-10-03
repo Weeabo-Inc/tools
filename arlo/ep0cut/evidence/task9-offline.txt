@@ -1,0 +1,96 @@
+### cargo test --release --offline
+
+test result: ok. 29 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+### cargo build --release --offline
+   Compiling ep0cut v0.1.0 (<HOME>/Documents/iOS/arlo-ios-move/tools/arlo/ep0cut)
+    Finished `release` profile [optimized] target(s) in 5.30s
+
+### ep0cut --dry-run   (mode cut, default)
+ep0cut --dry-run — NOTHING IS SENT, THE DEVICE IS NOT OPENED
+
+mode cut — GET_DESCRIPTOR(3,4) wLength=255 on 05ac:1227
+  index: the DECLARED iSerialNumber from the device descriptor, else fallback 4
+  deadline ladder (us): [0, 25, 50, 75, 100, 125, 150, 300, 2000]
+  reset-between: true (a cancel wedges EP0 on this bootrom; the reset is the measured recovery)
+
+  asked_us  -> cancel if not completed by then; status/sz reported as libusb gives them
+
+### ep0cut --mode sweep --dry-run  (compact ladder: every exact request)
+ep0cut --dry-run — NOTHING IS SENT, THE DEVICE IS NOT OPENED
+
+mode sweep — wLength x latency on 05ac:1227
+  index: the DECLARED iSerialNumber from the device descriptor, else fallback 4
+  repeats per point: 1 (round-robin over every shape x length)
+  per-row deadline: 250 ms (libusb's own timeout; THIS TOOL NEVER CANCELS). A row that exceeds it is TIMED_OUT; the ladder stops
+  reset-between: true (a TIMED_OUT row is libusb cancelling internally — the same wedge risk)
+  OUT data pattern: Zeros (zeros = gaster's own memset)
+  shapes:
+    pad       bm=00 b=00 wValue=0 wIndex=0 (pad, gaster.c:853)
+    overflow  bm=02 b=03 wValue=0 wIndex=0x80 (overflow, gaster.c:1211)
+    getdesc   bm=80 b=06 wValue=(3<<8)|index wIndex=0x0409 (control)
+
+  the exact ladder, in order (setup packet bytes as they go on the wire):
+  round  shape     wLength  setup packet (8 bytes)
+      0  pad             0  00 00 00 00 00 00 00 00
+      0  pad            48  00 00 00 00 00 00 30 00
+      0  pad           255  00 00 00 00 00 00 ff 00
+      0  pad          1280  00 00 00 00 00 00 00 05
+      0  pad          2048  00 00 00 00 00 00 00 08
+      0  overflow        0  02 03 00 00 80 00 00 00
+      0  overflow       48  02 03 00 00 80 00 30 00
+      0  overflow      255  02 03 00 00 80 00 ff 00
+      0  overflow     1280  02 03 00 00 80 00 00 05
+      0  overflow     2048  02 03 00 00 80 00 00 08
+      0  getdesc         0  80 06 04 03 09 04 00 00
+      0  getdesc        48  80 06 04 03 09 04 30 00
+      0  getdesc       255  80 06 04 03 09 04 ff 00
+      0  getdesc      1280  80 06 04 03 09 04 00 05
+      0  getdesc      2048  80 06 04 03 09 04 00 08
+
+  15 requests total: 10 OUT (data stage filled with Zeros), 5 IN (GET_DESCRIPTOR control)
+
+  CONTROLS this ladder will check at run time:
+    C1  at least one GET_DESCRIPTOR row must COMPLETE with >0 bytes (the device answers it)
+    C2  GET_DESCRIPTOR rows that return the SAME byte count at DIFFERENT asked lengths must be
+        flat within the noise floor; a slope there is a HOST artifact and invalidates any slope
+    C3  the wLength-0 rows are the baseline every per-packet number is measured from
+
+  READ IT LIKE THIS: consumption (a) predicts a rise of ~the GET_DESCRIPTOR calibration
+  per 64-byte packet; deliberation (b) predicts flat. The run prints both numbers and
+  the falsification. A slope through 3 points is not a measurement of the ROM.
+
+### ep0cut --mode abort-pad --dry-run  (pad-after-abort)
+ep0cut --dry-run — NOTHING IS SENT, THE DEVICE IS NOT OPENED
+
+mode abort-pad — pad AFTER an aborted DNLOAD, with its cold baseline, on 05ac:1227
+  index: the DECLARED iSerialNumber from the device descriptor, else fallback 4
+  per point: (1) pad at L COLD x3 (the only non-state-changing arm; its median/n/spread are printed and its spread widens the point's tolerance); (2) RESET; (3) aborted DFU_DNLOAD 2048,
+              cancel after 0 us; (4) pad at L again with NO reset between (3) and (4).
+              The decisive length is FIRST.
+  lengths: [1280, 256, 128, 64, 0]
+  per-row deadline: 250 ms (libusb's timeout; the pad is never cancelled by this tool)
+  reset-between: true (between the arms, and after any wedged PAD row; the abort row is
+                 expected to end CANCELLED — that is the cut, not a wedge)
+  *** STATE-CHANGING: step (2)+(3) is checkm8's SETUP corruption step. ***
+  SCOPE: this is the ISOLATED abort->pad. The real attempt-3 pad was preceded by two
+         COMPLETED 2048-byte DNLOADs and two drains, and on a pwned device this
+         measures the pwned EP0 path — attribute to the SecureROM only with a stock
+         (power-cycled) control.
+
+  the sequence, with the exact setup packets:
+  point 0: cold pad [00 00 00 00 00 00 00 05] x3 -> dnload [21 01 00 00 00 00 00 08] -> pad [00 00 00 00 00 00 00 05] (no reset between the last two)
+  point 1: cold pad [00 00 00 00 00 00 00 01] x3 -> dnload [21 01 00 00 00 00 00 08] -> pad [00 00 00 00 00 00 00 01] (no reset between the last two)
+  point 2: cold pad [00 00 00 00 00 00 80 00] x3 -> dnload [21 01 00 00 00 00 00 08] -> pad [00 00 00 00 00 00 80 00] (no reset between the last two)
+  point 3: cold pad [00 00 00 00 00 00 40 00] x3 -> dnload [21 01 00 00 00 00 00 08] -> pad [00 00 00 00 00 00 40 00] (no reset between the last two)
+  point 4: cold pad [00 00 00 00 00 00 00 00] x3 -> dnload [21 01 00 00 00 00 00 08] -> pad [00 00 00 00 00 00 00 00] (no reset between the last two)
+
+  READ IT LIKE THIS: the tool reports, per length, the cold median/n/spread, the abort's sz
+  and the after row, then classifies the point (same / CHANGED / WEDGED-after-cold-answered /
+  NO BASELINE) and fits the after-arm's slope. A point whose cold arm wedged or whose cold
+  repeats disagree is NO BASELINE — unclassifiable, never a silent 'same'. `CHANGED` proves
+  the pad is STATE-DEPENDENT, not that it consumed data — the cancel also leaves an
+  EP0-recovery cost. Only a rising after-slope at the served-transfer per-packet cost
+  supports consumption. If NOTHING was classifiable the verdict says so and the tool exits 1.
+  Noise floor 50 us (archived cold rows' 171-187 us range) or the point's own spread.

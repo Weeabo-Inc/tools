@@ -1,0 +1,2 @@
+   Compiling gate-selftest-pass v0.0.0 (E:\Reverseing\Arlo\tools\arlo\.selftest\pass-crate)
+    Finished `release` profile [optimized] target(s) in 0.27s

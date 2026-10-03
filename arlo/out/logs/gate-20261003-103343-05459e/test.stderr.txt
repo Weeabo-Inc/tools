@@ -1,0 +1,3 @@
+    Finished `release` profile [optimized] target(s) in 0.02s
+     Running unittests src\lib.rs (target\release\deps\gate_selftest_pass-8cdc56163632ae29.exe)
+   Doc-tests gate_selftest_pass

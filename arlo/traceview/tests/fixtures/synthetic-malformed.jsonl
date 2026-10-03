@@ -1,0 +1,7 @@
+{"seq":1,"stage":"RESET","kind":"reset_real","t_micros":100,"detail":"libusb rc=0"}
+{"seq":2,"stage":"SETUP","kind":"xfer","t_micros":200,"label":"async-abort","status":"CANCELLED","bm_request_type":33,"b_request":1,"w_length":2048,"transferred":0,"requested":2048,"abort_after_ms":4,"xfer_seq":1
+this is not json at all
+{"stage":"SETUP","seq":4,"kind":"xfer","t_micros":300,"label":"pad-request","status":"STALL","w_length":1280,"transferred":0,"requested":1280}
+{"seq":3,"stage":"SETUP","kind":"xfer","t_micros":400,"label":"pad-request","status":"TIMEOUT","w_length":1280,"transferred":0,"requested":1280}
+{"seq":6,"stage":"SETUP","t_micros":500}
+{"seq":7,"stage":"SETUP","kind":"xfer","t_micros":600}

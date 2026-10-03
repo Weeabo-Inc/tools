@@ -1,0 +1,4 @@
+   Compiling gate-selftest-pass v0.0.0 (E:\Reverseing\Arlo\tools\arlo\.selftest\pass-crate)
+    Finished `release` profile [optimized] target(s) in 0.44s
+     Running unittests src\lib.rs (target\release\deps\gate_selftest_pass-8cdc56163632ae29.exe)
+   Doc-tests gate_selftest_pass

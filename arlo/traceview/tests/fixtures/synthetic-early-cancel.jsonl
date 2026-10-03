@@ -1,0 +1,5 @@
+{"seq":1,"stage":"-","kind":"enumerated","t_micros":100,"detail":"PID 0x1227=1"}
+{"seq":2,"stage":"SETUP","kind":"xfer","t_micros":200,"label":"async-abort","status":"CANCELLED","bm_request_type":33,"b_request":1,"w_value":0,"w_index":0,"w_length":2048,"transferred":0,"requested":2048,"xfer_micros":12,"libusb_rc":0,"abort_after_ms":5,"xfer_seq":1}
+{"seq":3,"stage":"SETUP","kind":"xfer","t_micros":260,"label":"pad-request","status":"TIMEOUT","bm_request_type":0,"b_request":0,"w_value":0,"w_index":0,"w_length":1280,"transferred":0,"requested":1280,"xfer_micros":5001,"libusb_rc":-7,"xfer_seq":2}
+{"seq":4,"stage":"SETUP","kind":"xfer","t_micros":700,"label":"async-abort","status":"CANCELLED","bm_request_type":33,"b_request":1,"w_value":0,"w_index":0,"w_length":2048,"transferred":0,"requested":2048,"xfer_micros":0,"libusb_rc":0,"abort_after_ms":0,"xfer_seq":3}
+{"seq":5,"stage":"SETUP","kind":"xfer","t_micros":760,"label":"pad-request","status":"TIMEOUT","bm_request_type":0,"b_request":0,"w_value":0,"w_index":0,"w_length":1280,"transferred":0,"requested":1280,"xfer_micros":5002,"libusb_rc":-7,"xfer_seq":4}

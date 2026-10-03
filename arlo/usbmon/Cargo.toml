@@ -1,0 +1,24 @@
+[package]
+name = "usbmon"
+version = "0.1.0"
+edition = "2021"
+description = "Reads a Linux usbmon `u` text capture and reports what the kernel recorded. Reads a file; opens no device."
+license = "Apache-2.0"
+
+# Dependency-light on purpose, and both are already used by tools/arlo/traceview:
+#   serde_json — machine-readable output. Its escaping is not ours to get wrong.
+#   sha2       — a *third-party* SHA-256 so a report can be pinned to exact bytes
+#                (usbmon's own node is root-only; the file is the evidence, so the
+#                file must be identifiable byte-for-byte).
+# No regex, no clap, no serde derive.
+[dependencies]
+serde_json = "1"
+sha2 = "0.10"
+
+[lib]
+name = "usbmon"
+path = "src/lib.rs"
+
+[[bin]]
+name = "usbmon"
+path = "src/main.rs"

@@ -1,0 +1,22 @@
+[package]
+name = "ep0cut"
+version = "0.1.0"
+edition = "2021"
+description = "Cut a control IN transfer the device is actually answering, at a chosen MICROSECOND deadline, and report libusb's own `actual_length`. The instrument for the `sz` question."
+license = "Apache-2.0"
+
+# Deliberately raw: `libusb1-sys`, not `rusb`. rusb 0.9 exposes no async transfer
+# API at all (checked: no `Transfer`, no `submit_transfer`), and this tool exists
+# precisely to submit, wait a chosen number of MICROSECONDS, and cancel — the one
+# operation a synchronous `read_control` cannot express and the one the whole
+# `sz` question turns on.
+#
+#   libusb1-sys — the C API itself, the same one a9pwn calls through `sys`.
+#   libc        — only for the `timeval` the event loop hands to libusb.
+[dependencies]
+libusb1-sys = "0.7"
+libc = "0.2"
+
+[[bin]]
+name = "ep0cut"
+path = "src/main.rs"
